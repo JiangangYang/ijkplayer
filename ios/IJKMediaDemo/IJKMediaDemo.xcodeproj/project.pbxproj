@@ -71,6 +71,13 @@
 			remoteGlobalIDString = E654EA891B6B27E600B0F2D0;
 			remoteInfo = IJKMediaFramework;
 		};
+		F6F44DCF21776C5D00253832 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6D74F2918A5F94B00165BFD /* IJKMediaPlayer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5450B0431E63EA4300568494;
+			remoteInfo = IJKMediaFrameworkWithSSL;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -274,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				E654EAD71B6B28B100B0F2D0 /* IJKMediaFramework.framework */,
+				F6F44DD021776C5D00253832 /* IJKMediaFrameworkWithSSL.framework */,
 				E654EAD91B6B28B100B0F2D0 /* IJKMediaFrameworkTests.xctest */,
 			);
 			name = Products;
@@ -309,6 +317,11 @@
 				CLASSPREFIX = IJK;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = bilibili;
+				TargetAttributes = {
+					E6903EFB17EAF70200CFD954 = {
+						DevelopmentTeam = 27RFSD4S44;
+					};
+				};
 			};
 			buildConfigurationList = E6903EF717EAF70200CFD954 /* Build configuration list for PBXProject "IJKMediaDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -346,6 +359,13 @@
 			fileType = wrapper.cfbundle;
 			path = IJKMediaFrameworkTests.xctest;
 			remoteRef = E654EAD81B6B28B100B0F2D0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F6F44DD021776C5D00253832 /* IJKMediaFrameworkWithSSL.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = IJKMediaFrameworkWithSSL.framework;
+			remoteRef = F6F44DCF21776C5D00253832 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -481,6 +501,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 27RFSD4S44;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IJKMediaDemo/IJKMediaDemo-Prefix.pch";
 				INFOPLIST_FILE = "IJKMediaDemo/IJKMediaDemo-Info.plist";
@@ -490,6 +512,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = arm64;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -501,6 +524,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 27RFSD4S44;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IJKMediaDemo/IJKMediaDemo-Prefix.pch";
 				INFOPLIST_FILE = "IJKMediaDemo/IJKMediaDemo-Info.plist";
@@ -510,6 +535,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = arm64;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
