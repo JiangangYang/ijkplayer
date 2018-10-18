@@ -252,7 +252,7 @@ static int ijkio_httphook_reconnect_at(IjkURLContext *h, int64_t offset)
     IjkAVDictionary *extra_opts = NULL;
 
     ijk_av_dict_set_int(&extra_opts, "offset", offset, 0);
-    ijk_av_dict_set_int(&extra_opts, "dns_cache_clear", 1, 0);
+    ijk_av_dict_set_int(&extra_opts, "dns_cache_clear", 1, 1);
     ret = ijkio_urlhook_reconnect(h, extra_opts);
     ijk_av_dict_free(&extra_opts);
     return ret;

@@ -32,10 +32,7 @@
 
     [self.window makeKeyAndVisible];
 
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self setupHTTPCache];
-    });
+    [self setupHTTPCache];
 
     return YES;
 }

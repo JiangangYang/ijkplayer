@@ -75,10 +75,12 @@
     [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
     // [IJKFFMoviePlayerController checkIfPlayerVersionMatch:YES major:1 minor:0 micro:0];
 
-    IJKFFOptions *options = [IJKFFOptions optionsByDefault];
+    IJKFFOptions *options = [self optionsByDefault];
 
     NSString * proxyURLString = [KTVHTTPCache proxyURLStringWithOriginalURLString:self.url.absoluteString];
 
+    NSLog(@"self.url.absoluteString:%@ proxyURLString:%@",self.url.absoluteString,proxyURLString);
+    
     self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:proxyURLString] withOptions:options];
     self.player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.player.view.frame = self.view.bounds;
@@ -90,6 +92,27 @@
     [self.view addSubview:self.mediaControl];
 
     self.mediaControl.delegatePlayer = self.player;
+}
+
+- (IJKFFOptions *)optionsByDefault
+{
+    IJKFFOptions *options = [[IJKFFOptions alloc] init];
+    [options setFormatOptionIntValue:1024                       forKey:@"probsize"];
+    [options setFormatOptionIntValue:0                          forKey:@"analyzeduration"];
+    [options setPlayerOptionIntValue:1                          forKey:@"videotoolbox"];
+    [options setPlayerOptionIntValue:1                          forKey:@"infbuf"];
+    [options setCodecOptionIntValue:IJK_AVDISCARD_DEFAULT       forKey:@"skip_frame"];
+    [options setPlayerOptionIntValue:0                          forKey:@"packet-buffering"];
+    [options setFormatOptionIntValue:1                          forKey:@"reconnect"];
+    [options setFormatOptionIntValue:1                          forKey:@"auto_convert"];
+    [options setFormatOptionIntValue:0                          forKey:@"framedrop"];
+    [options setPlayerOptionIntValue:5000                       forKey:@"max_cached_duration"];
+    [options setPlayerOptionIntValue:30                         forKey:@"max-fps"];
+    [options setPlayerOptionIntValue:3                          forKey:@"video-pictq-size"];
+    [options setPlayerOptionIntValue:960                        forKey:@"videotoolbox-max-frame-width"];
+    [options setFormatOptionIntValue:30 * 1000 * 1000           forKey:@"timeout"];
+    [options setFormatOptionValue:@"ijkplayer"                  forKey:@"user-agent"];
+    return options;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

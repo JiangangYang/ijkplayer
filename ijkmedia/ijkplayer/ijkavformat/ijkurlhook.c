@@ -240,7 +240,7 @@ static int ijkhttphook_reconnect_at(URLContext *h, int64_t offset)
     AVDictionary *extra_opts = NULL;
 
     av_dict_set_int(&extra_opts, "offset", offset, 0);
-    av_dict_set_int(&extra_opts, "dns_cache_clear", 1, 0);
+    av_dict_set_int(&extra_opts, "dns_cache_clear", 1, 1);
     ret = ijkurlhook_reconnect(h, extra_opts);
     av_dict_free(&extra_opts);
     return ret;
