@@ -40,7 +40,7 @@
 }
 
 - (void)onClickPlayButton {
-    NSURL *url = [NSURL URLWithString:self.textView.text];
+    NSURL *url = [NSURL URLWithString:@"http://api.dongci-test.wmlives.com/opus/play?id=1603644356&sign=58060fcaf57468f64afb4f0e6b4ed31c"];
     NSString *scheme = [[url scheme] lowercaseString];
     
     if ([scheme isEqualToString:@"http"]

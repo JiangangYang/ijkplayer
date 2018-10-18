@@ -19,6 +19,7 @@
 #import "IJKMediaControl.h"
 #import "IJKCommon.h"
 #import "IJKDemoHistory.h"
+#import "KTVHTTPCache.h"
 
 @implementation IJKVideoViewController
 
@@ -57,6 +58,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        
     // Do any additional setup after loading the view from its nib.
 
 //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -75,7 +77,9 @@
 
     IJKFFOptions *options = [IJKFFOptions optionsByDefault];
 
-    self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.url withOptions:options];
+    NSString * proxyURLString = [KTVHTTPCache proxyURLStringWithOriginalURLString:self.url.absoluteString];
+
+    self.player = [[IJKFFMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:proxyURLString] withOptions:options];
     self.player.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.player.view.frame = self.view.bounds;
     self.player.scalingMode = IJKMPMovieScalingModeAspectFit;

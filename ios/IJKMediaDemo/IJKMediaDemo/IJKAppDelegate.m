@@ -17,6 +17,7 @@
 
 #import "IJKAppDelegate.h"
 #import "IJKDemoMainViewController.h"
+#import "KTVHTTPCache.h"
 
 @implementation IJKAppDelegate
 
@@ -30,8 +31,33 @@
     self.window.rootViewController = self.viewController;
 
     [self.window makeKeyAndVisible];
-    
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self setupHTTPCache];
+    });
+
     return YES;
+}
+
+- (void)setupHTTPCache
+{
+    [KTVHTTPCache logSetConsoleLogEnable:YES];
+    NSError * error;
+    [KTVHTTPCache proxyStart:&error];
+    if (error) {
+        NSLog(@"Proxy Start Failure, %@", error);
+    } else {
+        NSLog(@"Proxy Start Success");
+    }
+    [KTVHTTPCache tokenSetURLFilter:^NSURL * (NSURL * URL) {
+        NSLog(@"URL Filter reviced URL : %@", URL);
+        return URL;
+    }];
+    [KTVHTTPCache downloadSetUnsupportContentTypeFilter:^BOOL(NSURL * URL, NSString * contentType) {
+        NSLog(@"Unsupport Content-Type Filter reviced URL : %@, %@", URL, contentType);
+        return NO;
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
